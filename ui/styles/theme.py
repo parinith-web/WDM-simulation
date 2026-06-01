@@ -109,7 +109,7 @@ def inject_theme(theme: str) -> None:
         accent_bdr   = "rgba(125, 220, 255, .24)"
 
     raw = f"""<style>
-/* ── THEME TOKENS (set directly on :root for this render) ── */
+/* ── THEME TOKENS ── */
 :root {{
 {css_vars}
     --space-xs: 5.5px;
@@ -1051,7 +1051,6 @@ div[style*="margin-bottom: 16px"][style*="border-left"] {{
 }}
 
 /* ── TOGGLE AND CONTROL IMPROVEMENTS ── */
-/* Improve toggle switch visibility */
 [data-testid="stToggle"] label {{
     color: {text_h} !important;
 }}
@@ -1091,20 +1090,6 @@ div[style*="margin-bottom: 16px"][style*="border-left"] {{
     border-color: color-mix(in srgb, var(--accent) 34%, var(--border)) !important;
 }}
 
-.st-key-link_feature_toggles {{
-    height: 100%;
-    min-height: 150px;
-    display: flex !important;
-    flex-direction: column !important;
-    justify-content: space-between !important;
-    padding-top: 2px;
-    padding-bottom: 2px;
-}}
-
-.st-key-link_feature_toggles [data-testid="stElementContainer"] {{
-    margin: 0 !important;
-}}
-
 .summary-table-card {{
     border: 1px solid {card_border};
     border-radius: var(--radius-md);
@@ -1141,20 +1126,203 @@ div[style*="margin-bottom: 16px"][style*="border-left"] {{
     border-bottom: 0;
 }}
 
-/* Improve tab styling for light theme */
-[data-testid="stTabs"] [role="tab"] {{
-    color: {text_body} !important;
+/* ── SIMULATION SECTION SPECIFIC STYLES ── */
+.simulation-panel {{
+    border: 1px solid {card_border};
+    border-radius: 26px;
+    background: var(--card-gradient-premium);
+    padding: 30px 48px 34px 48px;
+    margin: 0 0 var(--space-xl) 0;
+    box-shadow: {card_shadow};
 }}
 
-[data-testid="stTabs"] [role="tab"][aria-selected="true"] {{
-    color: {accent_col} !important;
-    border-bottom: 2px solid {accent_col} !important;
-    box-shadow: none !important;
+.simulation-hero {{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-lg);
+    margin-bottom: 0;
 }}
 
-/* DataFrame and table styling for better contrast */
-[data-testid="stDataFrame"] {{
-    background-color: {card_bg} !important;
+.simulation-label {{
+    color: var(--accent);
+    font-family: var(--font-mono);
+    font-size: 13px;
+    font-weight: 800;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    margin: 0 0 var(--space-xl) 0;
+}}
+
+.simulation-title {{
+    color: var(--text-primary) !important;
+    font-family: var(--font-display) !important;
+    font-size: 42px !important;
+    font-weight: 760 !important;
+    letter-spacing: 0;
+    line-height: 1.1 !important;
+    margin: 0 !important;
+    white-space: nowrap !important;
+}}
+
+.simulation-hero p {{
+    color: var(--text-secondary);
+    font-size: 16px;
+    line-height: 1.62;
+    margin: 0;
+    width: 100%;
+    text-align: justify;
+    text-align-last: left;
+}}
+
+.st-key-simulation_controls {{
+    border: 0 !important;
+    background: transparent !important;
+    margin: 0 0 var(--space-lg) 0 !important;
+    padding: 0 !important;
+}}
+
+.st-key-simulation_controls > [data-testid="stVerticalBlock"] {{
+    gap: 0 !important;
+}}
+
+.st-key-simulation_controls [data-testid="stHorizontalBlock"] {{
+    align-items: flex-start !important;
+    gap: var(--space-2xl) !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    flex-wrap: nowrap !important;
+}}
+
+.st-key-simulation_controls [data-testid="stColumn"] {{
+    padding: 0 !important;
+    min-width: 0 !important;
+}}
+
+.st-key-simulation_controls [data-testid="stWidgetLabel"] p,
+.st-key-simulation_controls .stSlider label p,
+.st-key-simulation_controls .stSelectbox label p {{
+    color: var(--text-secondary) !important;
+    font-size: 14px !important;
+    font-weight: 650 !important;
+    letter-spacing: .02em !important;
+    margin-bottom: var(--space-xl) !important;
+}}
+
+.st-key-simulation_controls [data-testid="stSlider"] {{
+    margin-bottom: var(--space-2xl) !important;
+}}
+
+.st-key-simulation_controls [data-testid="stSlider"]:last-child {{
+    margin-bottom: 0 !important;
+}}
+
+.st-key-simulation_controls [data-testid="stSelectbox"] {{
+    margin-bottom: var(--space-2xl) !important;
+}}
+
+.st-key-simulation_controls [data-testid="stSelectbox"]:last-child {{
+    margin-bottom: 0 !important;
+}}
+
+.st-key-simulation_controls .st-key-link_feature_toggles {{
+    display: grid !important;
+    grid-template-rows: 1fr 1fr 1fr !important;
+    align-items: center !important;
+    gap: 0 !important;
+    padding-top: 61px !important;
+    height: 218px !important;
+    box-sizing: border-box !important;
+}}
+
+.st-key-simulation_controls .st-key-link_feature_toggles [data-testid="stElementContainer"] {{
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    flex-shrink: 0 !important;
+}}
+
+.st-key-simulation_controls [data-testid="stColumn"]:last-child,
+.st-key-simulation_controls [data-testid="stColumn"]:nth-child(3) {{
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-end !important;
+}}
+
+.st-key-simulation_controls [data-testid="stColumn"]:last-child [data-testid="stElementContainer"],
+.st-key-simulation_controls [data-testid="stColumn"]:nth-child(3) [data-testid="stElementContainer"] {{
+    width: 100% !important;
+    display: flex !important;
+    justify-content: flex-end !important;
+}}
+
+.st-key-simulation_controls [data-testid="stColumn"]:nth-child(2) [data-testid="stSelectbox"],
+.st-key-simulation_controls [data-testid="stColumn"]:nth-last-child(2) [data-testid="stSelectbox"] {{
+    width: 280px !important;
+    margin-left: 95px !important;
+}}
+
+.st-key-adv_tx_params [data-testid="stColumn"],
+.st-key-adv_tx_params [data-testid="stColumn"]:last-child,
+.st-key-adv_tx_params [data-testid="stColumn"]:nth-child(3) {{
+    display: block !important;
+    flex-direction: initial !important;
+    align-items: initial !important;
+}}
+
+.st-key-adv_tx_params [data-testid="stElementContainer"],
+.st-key-adv_tx_params [data-testid="stColumn"]:last-child [data-testid="stElementContainer"],
+.st-key-adv_tx_params [data-testid="stColumn"]:nth-child(3) [data-testid="stElementContainer"] {{
+    display: block !important;
+    justify-content: initial !important;
+    width: 100% !important;
+}}
+
+.st-key-adv_tx_params [data-testid="stSlider"] [data-testid="stTickBar"],
+.st-key-adv_tx_params [data-testid="stSlider"] [data-testid="stTickBarMin"],
+.st-key-adv_tx_params [data-testid="stSlider"] [data-testid="stTickBarMax"] {{
+    display: none !important;
+}}
+
+.st-key-simulation_controls .st-key-link_feature_toggles [data-testid="stElementContainer"]:nth-child(3) {{
+    align-self: end !important;
+    margin-bottom: -20px !important;
+}}
+
+.st-key-simulation_controls [data-testid="stCheckbox"] label[data-baseweb="checkbox"] {{
+    gap: var(--space-lg) !important;
+    justify-content: flex-end !important;
+    width: 100% !important;
+}}
+
+.st-key-simulation_controls [data-testid="stCheckbox"] label[data-baseweb="checkbox"] > div:first-child {{
+    transform: scale(1.15);
+    transform-origin: left center;
+}}
+
+.st-key-simulation_controls [data-testid="stCheckbox"] [data-testid="stWidgetLabel"] p {{
+    color: var(--text-primary) !important;
+    font-size: 15px !important;
+    font-weight: 550 !important;
+    margin: 0 !important;
+    min-width: 150px;
+}}
+
+.sim-run-row {{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1.6fr 1.6fr;
+    gap: var(--space-lg);
+    align-items: center;
+    margin: 0 0 var(--space-xl) 0;
+}}
+
+.st-key-sim_run_row [data-testid="stHorizontalBlock"] {{
+    gap: var(--space-lg) !important;
+    align-items: center !important;
+}}
+
+.st-key-sim_run_row [data-testid="stColumn"] {{
+    padding: 0 !important;
 }}
 
 /* ── RESPONSIVE ── */
@@ -1196,20 +1364,8 @@ div[style*="margin-bottom: 16px"][style*="border-left"] {{
     .section-heading, .panel-section-title {{
         flex-direction: column; align-items: flex-start;
     }}
-    .section-heading {{ padding: var(--space-lg); }}
-    .simulator-intro {{ padding: var(--space-xl); margin-bottom: var(--card-gap); }}
-    .simulator-intro h2 {{ font-size: clamp(22px, 8vw, 28px) !important; }}
-    .simulator-intro p {{ font-size: 13px; line-height: 1.6; }}
-    .workstation-panel {{ padding: var(--space-lg); margin-bottom: var(--card-gap); }}
-    .metric-grid {{ grid-template-columns: 1fr; }}
-    .metric-card {{ min-height: auto; padding: var(--space-lg); }}
-    .flow-strip {{
-        gap: var(--card-gap); margin-bottom: var(--card-gap);
-        grid-template-columns: repeat(4, 1fr);
-    }}
-    .flow-node {{ min-height: 64px; padding: var(--space-md); }}
-    .site-hero, .publisher-section {{ grid-template-columns: 1fr; min-height: auto; gap: var(--card-gap); }}
-    .hero-orbit, .publisher-art {{ min-height: 280px; }}
+    .simulation-panel {{ padding: var(--space-xl); }}
+    .simulation-title {{ font-size: clamp(28px, 9vw, 38px) !important; white-space: normal !important; }}
 }}
 
 /* metric-grid 3-col variant */
