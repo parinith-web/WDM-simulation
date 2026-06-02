@@ -249,8 +249,18 @@ html.scrolled [data-testid="stHeader"] {
 }
 
 /* Slider track / thumb micro-interaction */
-[data-testid="stSlider"] > div > div > div {
-  transition: transform var(--mo-fast) var(--mo-ease) !important;
+[data-testid="stSlider"] [role="slider"],
+[data-testid="stSlider"] [data-testid="stThumb"],
+[data-testid="stSlider"] div[data-baseweb="slider"] > div,
+[data-testid="stSlider"] [data-testid="stTickBar"] {
+  transition:
+    transform var(--mo-fast) var(--mo-ease),
+    left var(--mo-fast) var(--mo-ease),
+    background-color var(--mo-fast) var(--mo-ease) !important;
+}
+
+[data-testid="stSlider"]:hover [data-testid="stThumb"] {
+  transform: scale(1.2) translateZ(0);
 }
 
 /* Smooth checkbox + toggle */
