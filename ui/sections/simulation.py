@@ -115,30 +115,29 @@ def _image_demo(key: bytes, uploaded_img=None) -> tuple[np.ndarray, np.ndarray, 
 
 def render_simulation_section() -> None:
     # ── Page Wrap (Animation & Anchor) ────────────────────────────────────
-    html_block('<div class="swdm-page-wrap"><div id="simulation" class="section-anchor"></div>')
+    html_block('<div id="simulation" class="section-anchor"></div>')
 
     # ── Hero ──────────────────────────────────────────────────────────────
-    html_block("""
-    <section class="simulation-panel">
-        <div class="simulation-hero">
-            <div>
-                <div class="simulation-label">02 / Simulation</div>
-                <div class="simulation-title">Optical Secure WDM Simulator</div>
+    with st.container(key="simulation_hero_card"):
+        html_block("""
+            <div class="simulation-hero">
+                <div>
+                    <div class="simulation-label">02 / Simulation</div>
+                    <div class="simulation-title">Optical Secure WDM Simulator</div>
+                </div>
+                <p>
+                    The Optical Secure WDM Simulator is a unified analysis workspace for
+                    designing, testing, and validating wavelength-division multiplexed
+                    communication links. It enables configuration of transmission spans,
+                    channel plans, amplification strategies, and security layers while
+                    providing detailed insight into signal integrity, performance degradation,
+                    and network resilience. Through an interactive simulation pipeline, users
+                    can benchmark scenarios, compare configurations, and investigate system
+                    behavior across diverse operating conditions without modifying the
+                    underlying simulation engine.
+                </p>
             </div>
-            <p>
-                The Optical Secure WDM Simulator is a unified analysis workspace for
-                designing, testing, and validating wavelength-division multiplexed
-                communication links. It enables configuration of transmission spans,
-                channel plans, amplification strategies, and security layers while
-                providing detailed insight into signal integrity, performance degradation,
-                and network resilience. Through an interactive simulation pipeline, users
-                can benchmark scenarios, compare configurations, and investigate system
-                behavior across diverse operating conditions without modifying the
-                underlying simulation engine.
-            </p>
-        </div>
-    </section>
-    """)
+        """)
 
     # ── Parameter controls ────────────────────────────────────────────────
     with st.container(key="simulation_controls"):
@@ -168,102 +167,97 @@ def render_simulation_section() -> None:
     sweeps    = st.session_state.get("sweeps")
 
     if active is None and benchmark is None:
-        html_block("</div>")
         return
 
     # ── Active-link results ────────────────────────────────────────────────
     if active is not None:
-        html_block(
-            f"""
-            <section class="workstation-panel">
+        with st.container(key="active_run_panel"):
+            html_block(
+                f"""
                 <div class="panel-section-title">
                     <div>
                         <h2>Latest run: {active.scenario}</h2>
                         <p>Direct waveform output from the current controls, rendered from the active backend result.</p>
                     </div>
                 </div>
-            """
-        )
-        metric_cards([
-            (f"{active.empirical_q:.2f}", "Q-FACTOR"),
-            (f"{active.empirical_ber:.2e}", "BER"),
-            (f"{len(active.bits_rx)}", "BITS"),
-            (f"{options['fiber_length']:.0f} km", "FIBER LENGTH"),
-        ])
-        _plot(plot_waveforms, active, cfg, label="Waveforms")
-        html_block("</section>")
+                """
+            )
+            metric_cards([
+                (f"{active.empirical_q:.2f}", "Q-FACTOR"),
+                (f"{active.empirical_ber:.2e}", "BER"),
+                (f"{len(active.bits_rx)}", "BITS"),
+                (f"{options['fiber_length']:.0f} km", "FIBER LENGTH"),
+            ])
+            _plot(plot_waveforms, active, cfg, label="Waveforms")
 
     # ── Benchmark results ──────────────────────────────────────────────────
     if benchmark is not None and sweeps is not None:
         names = ["Without Secure", "With Secure + EDFA", "With Secure + EDFA + DCF"]
-        html_block(
-            """
-            <section class="workstation-panel">
+        with st.container(key="benchmark_suite_panel"):
+            html_block(
+                """
                 <div class="panel-section-title">
                     <div>
                         <h2>BER and Q-factor benchmark suite</h2>
                         <p>Distance sweeps, eye diagrams, scenario drilldowns, image encryption demo, and benchmark summary.</p>
                     </div>
                 </div>
-            """
-        )
-        metric_cards([(f"Q {result.empirical_q:.2f}", name) for result, name in zip(benchmark, names)])
-
-        tabs = st.tabs(["Q-factor", "BER", "Eye diagrams", "Scenario detail", "Image encryption", "Summary"])
-        with tabs[0]:
-            _plot(plot_q_factor, sweeps, cfg, label="Q-factor")
-        with tabs[1]:
-            _plot(plot_ber, sweeps, cfg, label="BER")
-        with tabs[2]:
-            _plot(plot_eye_grid, benchmark, cfg, label="Eye diagrams")
-        with tabs[3]:
-            scenario = st.selectbox("Scenario detail", list(sweeps.keys()), format_func=lambda s: SCENARIO_META[s]["label"])
-            _plot(plot_single_scenario, sweeps[scenario], cfg, label="Scenario detail")
-        with tabs[4]:
-            uploaded = st.file_uploader("Upload image for RC4 encryption demo", type=["png", "jpg", "jpeg", "bmp"])
-            original, encrypted, decrypted = _image_demo(cfg.rc4_key, uploaded)
-            image_cols = st.columns(3)
-            for col, label, arr in zip(image_cols, ["Original", "Encrypted", "Decrypted"], [original, encrypted, decrypted]):
-                with col:
-                    st.caption(label)
-                    st.image(arr, width="stretch", clamp=True)
-        with tabs[5]:
-            summary_rows = [
-                ("Without Secure",           "77.4 km", "6192 Gbps-km", "Baseline reach"),
-                ("With Secure + EDFA",       "63 km",   "5040 Gbps-km", "Security penalty"),
-                ("With Secure + EDFA + DCF", "100 km",  "8000 Gbps-km", "Recovered encrypted reach"),
-            ]
-            html_block(
-                """
-                <div class="summary-table-card">
-                    <table class="summary-table">
-                        <thead>
-                            <tr>
-                                <th>System</th>
-                                <th>Max Distance</th>
-                                <th>B×L Product</th>
-                                <th>Finding</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                """
-                + "".join(
-                    f"""
-                            <tr>
-                                <td>{system}</td>
-                                <td>{distance}</td>
-                                <td>{product}</td>
-                                <td>{finding}</td>
-                            </tr>
-                    """
-                    for system, distance, product, finding in summary_rows
-                )
-                + """
-                        </tbody>
-                    </table>
-                </div>
                 """
             )
-        html_block("</section>")
+            metric_cards([(f"Q {result.empirical_q:.2f}", name) for result, name in zip(benchmark, names)])
 
-    html_block("</div>")
+            tabs = st.tabs(["Q-factor", "BER", "Eye diagrams", "Scenario detail", "Image encryption", "Summary"])
+            with tabs[0]:
+                _plot(plot_q_factor, sweeps, cfg, label="Q-factor")
+            with tabs[1]:
+                _plot(plot_ber, sweeps, cfg, label="BER")
+            with tabs[2]:
+                _plot(plot_eye_grid, benchmark, cfg, label="Eye diagrams")
+            with tabs[3]:
+                scenario = st.selectbox("Scenario detail", list(sweeps.keys()), format_func=lambda s: SCENARIO_META[s]["label"])
+                _plot(plot_single_scenario, sweeps[scenario], cfg, label="Scenario detail")
+            with tabs[4]:
+                uploaded = st.file_uploader("Upload image for RC4 encryption demo", type=["png", "jpg", "jpeg", "bmp"])
+                original, encrypted, decrypted = _image_demo(cfg.rc4_key, uploaded)
+                image_cols = st.columns(3)
+                for col, label, arr in zip(image_cols, ["Original", "Encrypted", "Decrypted"], [original, encrypted, decrypted]):
+                    with col:
+                        st.caption(label)
+                        st.image(arr, width="stretch", clamp=True)
+            with tabs[5]:
+                summary_rows = [
+                    ("Without Secure",           "77.4 km", "6192 Gbps-km", "Baseline reach"),
+                    ("With Secure + EDFA",       "63 km",   "5040 Gbps-km", "Security penalty"),
+                    ("With Secure + EDFA + DCF", "100 km",  "8000 Gbps-km", "Recovered encrypted reach"),
+                ]
+                html_block(
+                    """
+                    <div class="summary-table-card">
+                        <table class="summary-table">
+                            <thead>
+                                <tr>
+                                    <th>System</th>
+                                    <th>Max Distance</th>
+                                    <th>B×L Product</th>
+                                    <th>Finding</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                    """
+                    + "".join(
+                        f"""
+                                <tr>
+                                    <td>{system}</td>
+                                    <td>{distance}</td>
+                                    <td>{product}</td>
+                                    <td>{finding}</td>
+                                </tr>
+                        """
+                        for system, distance, product, finding in summary_rows
+                    )
+                    + """
+                            </tbody>
+                        </table>
+                    </div>
+                    """
+                )

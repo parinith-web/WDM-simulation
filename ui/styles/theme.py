@@ -112,13 +112,13 @@ def inject_theme(theme: str) -> None:
 /* ── THEME TOKENS ── */
 :root {{
 {css_vars}
-    --space-xs: 5.5px;
-    --space-sm: 8.8px;
-    --space-md: 13.2px;
-    --space-lg: 17.6px;
-    --space-xl: 26.4px;
-    --space-2xl: 35.2px;
-    --space-3xl: 52.8px;
+    --space-xs: 6px;
+    --space-sm: 10px;
+    --space-md: 14px;
+    --space-lg: 20px;
+    --space-xl: 28px;
+    --space-2xl: 40px;
+    --space-3xl: 60px;
     --radius-xs: 5.5px;
     --radius-sm: 8.8px;
     --radius-md: 13.2px;
@@ -565,11 +565,9 @@ body, .stApp {{
 }}
 
 [data-testid="stExpander"] details,
-[data-testid="stExpander"] div,
 [data-testid="stExpander"] [data-testid="stVerticalBlock"],
 [data-testid="stExpanderDetails"],
-[data-testid="stExpanderDetails"] div {{
-    background: transparent !important;
+[data-testid="stExpanderDetails"] > div {{
     color: var(--text-primary) !important;
 }}
 
@@ -780,13 +778,15 @@ body, .stApp {{
     margin-bottom: var(--card-gap);
 }}
 
-.workstation-panel {{
-    border: 1px solid {card_border};
-    border-radius: var(--radius-lg);
-    background: {card_bg};
-    padding: var(--space-lg) var(--space-xl);
-    margin-bottom: var(--space-xl);
-    box-shadow: {card_shadow};
+.workstation-panel,
+.st-key-active_run_panel,
+.st-key-benchmark_suite_panel {{
+    border: 1px solid {card_border} !important;
+    border-radius: var(--radius-lg) !important;
+    background: {card_bg} !important;
+    padding: var(--space-lg) var(--space-xl) !important;
+    margin-bottom: var(--space-xl) !important;
+    box-shadow: {card_shadow} !important;
 }}
 
 .simulator-intro {{
@@ -1033,12 +1033,23 @@ body, .stApp {{
 }}
 
 /* ── SPACING HELPERS ── */
+/* Vertical spacing between primary blocks in the main shell */
+.st-key-dashboard_shell > [data-testid="stVerticalBlock"] {{
+    gap: var(--space-xl) !important;
+}}
+
+.st-key-dashboard_shell [data-testid="stElementContainer"] {{
+    margin-bottom: 0 !important;
+}}
+
 [data-testid="stHorizontalBlock"]:has([data-testid="stMetric"]),
 [data-testid="stHorizontalBlock"]:has(.block-card),
 [data-testid="stHorizontalBlock"]:has(.soft-card),
 [data-testid="stHorizontalBlock"]:has(.contact-card),
 [data-testid="stHorizontalBlock"]:has(.workstation-panel),
-[data-testid="stHorizontalBlock"]:has(.simulator-intro) {{
+[data-testid="stHorizontalBlock"]:has(.st-key-active_run_panel),
+[data-testid="stHorizontalBlock"]:has(.st-key-benchmark_suite_panel),
+[data-testid="stHorizontalBlock"]:has(.st-key-simulation_hero_card) {{
     gap: var(--card-gap) !important;
 }}
 
@@ -1127,13 +1138,23 @@ div[style*="margin-bottom: 16px"][style*="border-left"] {{
 }}
 
 /* ── SIMULATION SECTION SPECIFIC STYLES ── */
+.st-key-simulation_hero_card,
+.st-key-active_run_panel,
+.st-key-benchmark_suite_panel {{
+    border: 1px solid {card_border} !important;
+    border-radius: 24px !important;
+    background: var(--card-gradient-premium) !important;
+    padding: var(--space-xl) var(--space-2xl) !important;
+    margin-bottom: 0 !important;
+    box-shadow: {card_shadow} !important;
+    overflow: visible !important;
+}}
+
 .simulation-panel {{
-    border: 1px solid {card_border};
-    border-radius: 26px;
-    background: var(--card-gradient-premium);
-    padding: 30px 48px 34px 48px;
-    margin: 0 0 var(--space-xl) 0;
-    box-shadow: {card_shadow};
+    border: 0;
+    background: transparent;
+    padding: 0;
+    margin: 0;
 }}
 
 .simulation-hero {{

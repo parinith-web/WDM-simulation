@@ -22,7 +22,7 @@ from ui.sections import (
     render_simulation_section,
     render_theory_section,
 )
-from ui.styles import inject_theme
+from ui.styles import inject_theme, inject_motion
 
 
 st.set_page_config(
@@ -57,6 +57,7 @@ def init_state() -> None:
 def main() -> None:
     init_state()
     inject_theme(st.session_state.theme)
+    inject_motion()
     render_navbar(st.session_state.theme)
 
     page = st.session_state.get("page", "home")
