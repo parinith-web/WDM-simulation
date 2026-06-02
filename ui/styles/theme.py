@@ -1145,10 +1145,16 @@ div[style*="margin-bottom: 16px"][style*="border-left"] {{
     border-radius: 24px !important;
     background: var(--card-gradient-premium) !important;
     padding: var(--space-xl) var(--space-2xl) !important;
-    margin-bottom: 0 !important;
+    margin: 0 !important;
     box-shadow: {card_shadow} !important;
     overflow: visible !important;
 }}
+
+.st-key-simulation_hero_card *,
+.st-key-active_run_panel *,
+.st-key-benchmark_suite_panel * {
+    overflow: visible !important;
+}
 
 .simulation-panel {{
     border: 0;
@@ -1199,7 +1205,7 @@ div[style*="margin-bottom: 16px"][style*="border-left"] {{
 .st-key-simulation_controls {{
     border: 0 !important;
     background: transparent !important;
-    margin: 0 0 var(--space-lg) 0 !important;
+    margin: 0 !important;
     padding: 0 !important;
 }}
 
@@ -1334,7 +1340,7 @@ div[style*="margin-bottom: 16px"][style*="border-left"] {{
     grid-template-columns: 1fr 1fr 1.6fr 1.6fr;
     gap: var(--space-lg);
     align-items: center;
-    margin: 0 0 var(--space-xl) 0;
+    margin: 0 !important;
 }}
 
 .st-key-sim_run_row [data-testid="stHorizontalBlock"] {{

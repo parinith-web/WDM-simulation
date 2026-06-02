@@ -252,7 +252,8 @@ html.scrolled [data-testid="stHeader"] {
 [data-testid="stSlider"] [role="slider"],
 [data-testid="stSlider"] [data-testid="stThumb"],
 [data-testid="stSlider"] div[data-baseweb="slider"] > div,
-[data-testid="stSlider"] [data-testid="stTickBar"] {
+[data-testid="stSlider"] [data-testid="stTickBar"],
+[data-testid="stSlider"] [data-testid="stSliderTickBar"] {
   transition:
     transform var(--mo-fast) var(--mo-ease),
     left var(--mo-fast) var(--mo-ease),
@@ -261,6 +262,12 @@ html.scrolled [data-testid="stHeader"] {
 
 [data-testid="stSlider"]:hover [data-testid="stThumb"] {
   transform: scale(1.2) translateZ(0);
+}
+
+/* Ensure the slider interaction works with Streamlit's internal layout */
+[data-testid="stSlider"] [data-baseweb="slider"] {
+  padding-top: 12px !important;
+  padding-bottom: 12px !important;
 }
 
 /* Smooth checkbox + toggle */
