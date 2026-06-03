@@ -456,6 +456,10 @@ body, .stApp {{
     color: var(--text-primary) !important;
 }}
 
+[data-testid="stSlider"] [data-testid="stTickBar"] {{
+    display: none !important;
+}}
+
 [data-testid="stTextInput"] input,
 [data-testid="stSelectbox"] > div > div {{
     min-height: 45px !important;
@@ -474,8 +478,10 @@ body, .stApp {{
 [data-testid="stSelectbox"] [data-baseweb="select"] > div {{
     min-height: 45px !important;
     align-items: center !important;
+    border-radius: var(--radius-sm) !important;
     background: var(--card-gradient-premium) !important;
     color: {text_h} !important;
+    overflow: hidden !important;
 }}
 
 [data-testid="stSelectbox"] [data-baseweb="select"] span,
@@ -896,12 +902,12 @@ body, .stApp {{
     font-size: 12px;
     font-weight: 750;
     transition: transform var(--ease), box-shadow var(--ease);
-    box-shadow: 0 10px 28px color-mix(in srgb, var(--accent) 18%, transparent);
+    box-shadow: 0 2px 8px color-mix(in srgb, var(--accent) 18%, transparent);
 }}
 
 .theme-pill:hover {{
     transform: translateY(-1px);
-    box-shadow: 0 14px 34px color-mix(in srgb, var(--accent) 24%, transparent);
+    box-shadow: 0 4px 12px color-mix(in srgb, var(--accent) 24%, transparent);
 }}
 
 .developer-credit {{
@@ -1280,7 +1286,6 @@ div[style*="margin-bottom: 16px"][style*="border-left"] {{
 .st-key-simulation_controls [data-testid="stColumn"]:nth-child(2) [data-testid="stSelectbox"],
 .st-key-simulation_controls [data-testid="stColumn"]:nth-last-child(2) [data-testid="stSelectbox"] {{
     width: 280px !important;
-    margin-left: 95px !important;
 }}
 
 .st-key-adv_tx_params [data-testid="stColumn"],
