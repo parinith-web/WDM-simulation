@@ -268,11 +268,14 @@ class SimulationEngine:
         )
 
     def sweep_all_scenarios(self) -> dict[str, PerformanceSweep]:
-        """Run sweep for all three paper scenarios."""
-        return {
-            s: self.sweep_performance(s)
-            for s in ("no_encryption", "encryption", "dcf_edfa")
-        }
+        """Run sweep for all three paper scenarios in parallel."""
+        from concurrent.futures import ProcessPoolExecutor
+        scenarios = ("no_encryption", "encryption", "dcf_edfa")
+        with ProcessPoolExecutor(max_workers=len(scenarios)) as executor:
+            # Note: We pass self.sweep_performance directly because SimulationEngine
+            # and PerformanceSweep are pickleable.
+            results = executor.map(self.sweep_performance, scenarios)
+        return dict(zip(scenarios, results))
 
     #  Helpers 
 

@@ -145,23 +145,23 @@ def render_theory_section() -> None:
             font-weight: 700;
             line-height: 1.2;
         }
-        .theory-intro {{
+        .theory-intro {
             border: 1px solid var(--border);
             border-radius: var(--radius-lg);
             background: var(--card-gradient-premium);
             padding: var(--space-lg) var(--space-xl);
             margin: var(--space-xl) 0;
-        }}
-        .theory-intro p {{
+        }
+        .theory-intro p {
             color: var(--text-secondary);
             font-size: 15px;
             line-height: 1.65;
             margin: 0;
-        }}
-        .theory-intro strong {{
+        }
+        .theory-intro strong {
             color: var(--accent);
             font-weight: 700;
-        }}
+        }
         @media (max-width: 1180px) {
             .theory-flow {
                 grid-template-columns: repeat(8, 80px);
