@@ -1369,6 +1369,35 @@ div[style*="margin-bottom: 16px"][style*="border-left"] {{
     padding: 0 !important;
 }}
 
+.st-key-sim_run_row [data-testid="stColumn"]:nth-child(3),
+.st-key-sim_run_row [data-testid="stColumn"]:nth-child(4) {{
+    display: flex !important;
+    justify-content: flex-end !important;
+}}
+
+.st-key-sim_run_row [data-testid="stColumn"]:nth-child(3) [data-testid="stElementContainer"],
+.st-key-sim_run_row [data-testid="stColumn"]:nth-child(4) [data-testid="stElementContainer"] {{
+    width: auto !important;
+}}
+
+/* ── FILE UPLOADER VISIBILITY ── */
+[data-testid="stFileUploader"] button {{
+    background-color: var(--accent) !important;
+    color: var(--bg-primary) !important;
+    border: 1px solid var(--accent) !important;
+    font-weight: 600 !important;
+}}
+
+[data-testid="stFileUploader"] button:hover {{
+    background-color: var(--accent-2) !important;
+    box-shadow: 0 4px 12px color-mix(in srgb, var(--accent) 25%, transparent) !important;
+}}
+
+[data-testid="stFileUploaderDropzone"] {{
+    border: 2px dashed var(--border-strong) !important;
+    background: color-mix(in srgb, var(--accent) 4%, transparent) !important;
+}}
+
 /* ── RESPONSIVE ── */
 @media (max-width: 1180px) {{
     :root {{ --sidebar-w: 220px; }}

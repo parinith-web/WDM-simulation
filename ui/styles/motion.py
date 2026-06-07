@@ -36,17 +36,9 @@ _MOTION_CSS = r"""
 
 /* ─────────────────────────────────────────────
    GPU LAYER HINT  — promote animated elements
+   Restricted to non-container elements to prevent
+   stacking context issues with dropdowns.
 ───────────────────────────────────────────── */
-.metric-card, .flow-node, .workstation-panel, .panel-card,
-.soft-card, .block-card, .contact-card, .theory-intro,
-.simulator-intro, .summary-table-card, .architecture-card, .architecture-flow-node,
-[data-testid="stMetric"],
-[data-testid="stButton"] > button,
-[data-testid="baseButton-secondary"],
-[data-testid="baseButton-primary"],
-.stDownloadButton > button,
-.swdm-nav-item, a.swdm-nav-item,
-.swdm-sidebar,
 [data-testid="stPlotlyChart"],
 [data-testid="stImage"] img {
   will-change: transform;
