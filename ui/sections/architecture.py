@@ -98,13 +98,6 @@ def render_architecture_section() -> None:
     html_block(
         """
         <style>
-            .swdm-page-wrap {
-                animation: swdm-enter 500ms cubic-bezier(.22,1,.36,1) both;
-            }
-            @keyframes swdm-enter {
-                from { opacity: 0; transform: translateY(24px); }
-                to   { opacity: 1; transform: translateY(0); }
-            }
             .architecture-panel {
                 border: 1px solid var(--border);
                 border-radius: var(--radius-lg);
@@ -302,7 +295,7 @@ def render_architecture_section() -> None:
         <section class="architecture-panel">
             <div class="architecture-hero">
                 <div>
-                    <div class="architecture-label">04 / Architecture</div>
+                    <div class="architecture-label">03 / Architecture</div>
                     <div class="architecture-title">System and Python architecture</div>
                 </div>
                 <p>

@@ -122,7 +122,7 @@ def render_simulation_section() -> None:
         html_block("""
             <div class="simulation-hero">
                 <div>
-                    <div class="simulation-label">02 / Simulation</div>
+                    <div class="simulation-label">01 / Simulation</div>
                     <div class="simulation-title">Optical Secure WDM Simulator</div>
                 </div>
                 <p>

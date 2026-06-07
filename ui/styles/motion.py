@@ -39,7 +39,7 @@ _MOTION_CSS = r"""
 ───────────────────────────────────────────── */
 .metric-card, .flow-node, .workstation-panel, .panel-card,
 .soft-card, .block-card, .contact-card, .theory-intro,
-.simulator-intro, .summary-table-card,
+.simulator-intro, .summary-table-card, .architecture-card, .architecture-flow-node,
 [data-testid="stMetric"],
 [data-testid="stButton"] > button,
 [data-testid="baseButton-secondary"],
@@ -80,7 +80,7 @@ _MOTION_CSS = r"""
 ───────────────────────────────────────────── */
 .metric-card:hover, .flow-node:hover, .panel-card:hover,
 .soft-card:hover, .block-card:hover, .theory-intro:hover,
-.summary-table-card:hover {
+.summary-table-card:hover, .architecture-card:hover, .architecture-flow-node:hover {
   transform: translateY(-3px) translateZ(0);
   box-shadow: 0 16px 40px -12px rgba(0,0,0,.42),
               0 4px 10px  -4px rgba(0,0,0,.22);
@@ -431,27 +431,45 @@ html.scrolled [data-testid="stHeader"] {
    METRIC GRID  & FLOW STRIP — auto stagger
 ───────────────────────────────────────────── */
 .metric-grid > .metric-card,
-.flow-strip  > .flow-node {
+.flow-strip  > .flow-node,
+.architecture-card-grid > .architecture-card,
+.architecture-flow > .architecture-flow-node {
   opacity: 0;
   transform: translateY(14px) translateZ(0);
   animation: swdm-fade-up var(--mo-slow) var(--mo-ease-out) forwards;
 }
 .metric-grid > .metric-card:nth-child(1),
-.flow-strip  > .flow-node:nth-child(1) { animation-delay:  40ms; }
+.flow-strip  > .flow-node:nth-child(1),
+.architecture-card-grid > .architecture-card:nth-child(1),
+.architecture-flow > .architecture-flow-node:nth-child(1) { animation-delay:  40ms; }
 .metric-grid > .metric-card:nth-child(2),
-.flow-strip  > .flow-node:nth-child(2) { animation-delay: 100ms; }
+.flow-strip  > .flow-node:nth-child(2),
+.architecture-card-grid > .architecture-card:nth-child(2),
+.architecture-flow > .architecture-flow-node:nth-child(2) { animation-delay: 100ms; }
 .metric-grid > .metric-card:nth-child(3),
-.flow-strip  > .flow-node:nth-child(3) { animation-delay: 160ms; }
+.flow-strip  > .flow-node:nth-child(3),
+.architecture-card-grid > .architecture-card:nth-child(3),
+.architecture-flow > .architecture-flow-node:nth-child(3) { animation-delay: 160ms; }
 .metric-grid > .metric-card:nth-child(4),
-.flow-strip  > .flow-node:nth-child(4) { animation-delay: 220ms; }
+.flow-strip  > .flow-node:nth-child(4),
+.architecture-card-grid > .architecture-card:nth-child(4),
+.architecture-flow > .architecture-flow-node:nth-child(4) { animation-delay: 220ms; }
 .metric-grid > .metric-card:nth-child(5),
-.flow-strip  > .flow-node:nth-child(5) { animation-delay: 280ms; }
+.flow-strip  > .flow-node:nth-child(5),
+.architecture-card-grid > .architecture-card:nth-child(5),
+.architecture-flow > .architecture-flow-node:nth-child(5) { animation-delay: 280ms; }
 .metric-grid > .metric-card:nth-child(6),
-.flow-strip  > .flow-node:nth-child(6) { animation-delay: 340ms; }
+.flow-strip  > .flow-node:nth-child(6),
+.architecture-card-grid > .architecture-card:nth-child(6),
+.architecture-flow > .architecture-flow-node:nth-child(6) { animation-delay: 340ms; }
 .metric-grid > .metric-card:nth-child(7),
-.flow-strip  > .flow-node:nth-child(7) { animation-delay: 400ms; }
+.flow-strip  > .flow-node:nth-child(7),
+.architecture-card-grid > .architecture-card:nth-child(7),
+.architecture-flow > .architecture-flow-node:nth-child(7) { animation-delay: 400ms; }
 .metric-grid > .metric-card:nth-child(8),
-.flow-strip  > .flow-node:nth-child(8) { animation-delay: 460ms; }
+.flow-strip  > .flow-node:nth-child(8),
+.architecture-card-grid > .architecture-card:nth-child(8),
+.architecture-flow > .architecture-flow-node:nth-child(8) { animation-delay: 460ms; }
 
 /* ─────────────────────────────────────────────
    HERO & SIMULATOR INTRO  — content cascade

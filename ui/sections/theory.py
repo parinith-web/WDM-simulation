@@ -193,7 +193,7 @@ def render_theory_section() -> None:
     <section class="theory-panel">
         <div class="theory-hero">
             <div>
-                <div class="theory-label">03 / Theory</div>
+                <div class="theory-label">02 / Theory</div>
                 <div class="theory-title">Optical communication, decoded</div>
             </div>
             <p>
