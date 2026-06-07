@@ -17,11 +17,10 @@ def render_navbar(theme: str) -> None:
     theme_label = "Light theme" if is_dark else "Dark theme"
 
     pages = [
-        ("home", "Home", "01", "Intro"),
-        ("simulation", "Simulation", "02", "Lab"),
-        ("theory", "Theory", "03", "Model"),
-        ("architecture", "Architecture", "04", "Stack"),
-        ("publisher", "Publisher", "05", "Contact"),
+        ("simulation", "Simulation", "01", "Lab"),
+        ("theory", "Theory", "02", "Model"),
+        ("architecture", "Architecture", "03", "Stack"),
+        ("publisher", "Publisher", "04", "Contact"),
     ]
 
     nav_items = "\n".join(

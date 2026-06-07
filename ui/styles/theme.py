@@ -1203,10 +1203,13 @@ div[style*="margin-bottom: 16px"][style*="border-left"] {{
 }}
 
 .st-key-simulation_controls {{
-    border: 0 !important;
-    background: transparent !important;
-    margin: 0 0 var(--space-lg) 0 !important;
-    padding: 0 !important;
+    border: 1px solid {card_border} !important;
+    border-radius: 24px !important;
+    background: var(--card-gradient-premium) !important;
+    padding: var(--space-xl) var(--space-2xl) !important;
+    margin-bottom: var(--space-xl) !important;
+    box-shadow: {card_shadow} !important;
+    overflow: visible !important;
 }}
 
 .st-key-simulation_controls > [data-testid="stVerticalBlock"] {{

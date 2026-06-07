@@ -17,8 +17,6 @@ import streamlit as st
 from ui.components import render_navbar
 from ui.sections import (
     render_architecture_section,
-    render_home_section,
-    inject_hero_scripts,
     render_publisher_section,
     render_simulation_section,
     render_theory_section,
@@ -42,9 +40,9 @@ def init_state() -> None:
         st.session_state.theme = requested_theme
     if st.session_state.theme not in ("dark", "light"):
         st.session_state.theme = "dark"
-    # Active page: "home" | "simulation" | "theory" | "architecture" | "publisher"
+    # Active page: "simulation" | "theory" | "architecture" | "publisher"
     requested_page = st.query_params.get("page")
-    valid_pages = {"home", "simulation", "theory", "architecture", "publisher"}
+    valid_pages = {"simulation", "theory", "architecture", "publisher"}
     if requested_page in valid_pages:
         st.session_state.page = requested_page
     else:
@@ -59,15 +57,12 @@ def main() -> None:
     init_state()
     inject_theme(st.session_state.theme)
     inject_motion()
-    inject_hero_scripts()
     render_navbar(st.session_state.theme)
 
-    page = st.session_state.get("page", "home")
+    page = st.session_state.get("page", "simulation")
 
     with st.container(key="dashboard_shell"):
-        if page == "home":
-            render_home_section()
-        elif page == "simulation":
+        if page == "simulation":
             render_simulation_section()
         elif page == "theory":
             render_theory_section()
@@ -76,7 +71,7 @@ def main() -> None:
         elif page == "publisher":
             render_publisher_section()
         else:
-            render_home_section()
+            render_simulation_section()
 
 
 if __name__ == "__main__":

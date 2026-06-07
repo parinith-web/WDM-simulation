@@ -151,7 +151,7 @@ def render_publisher_section() -> None:
         <div id="publisher" class="section-anchor"></div>
         <section class="publisher-section">
             <div class="publisher-copy">
-                <div class="site-label">05 / Publisher</div>
+                <div class="site-label">04 / Publisher</div>
                 <h2>Let's Connect</h2>
                 <p>
                     I'm open to research collaborations, internships, and full-time roles in optical communication, 
