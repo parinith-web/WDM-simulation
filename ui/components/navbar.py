@@ -41,7 +41,6 @@ def render_navbar(theme: str) -> None:
                 <div class="swdm-brand-mark">PR</div>
                 <div>
                     <strong>PR.dev</strong>
-                    <span>Optical analytics</span>
                 </div>
             </div>
             <nav class="swdm-nav-group">

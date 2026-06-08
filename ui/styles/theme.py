@@ -1396,6 +1396,7 @@ div[style*="margin-bottom: 16px"][style*="border-left"] {{
 [data-testid="stFileUploaderDropzone"] {{
     border: 2px dashed var(--border-strong) !important;
     background: color-mix(in srgb, var(--accent) 4%, transparent) !important;
+    color: var(--text-primary) !important;
 }}
 
 /* ── RESPONSIVE ── */
