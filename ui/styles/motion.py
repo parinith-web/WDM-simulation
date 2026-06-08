@@ -283,8 +283,8 @@ html.scrolled [data-testid="stHeader"] {
 }
 
 @keyframes swdm-dropdown-in {
-  from { opacity: 0; transform: translateY(-6px) scale(.97); }
-  to   { opacity: 1; transform: translateY(0)   scale(1); }
+  from { opacity: 0; }
+  to   { opacity: 1; }
 }
 
 /* ─────────────────────────────────────────────
@@ -378,8 +378,8 @@ html.scrolled [data-testid="stHeader"] {
    FADE-UP ENTRANCE KEYFRAME  (core animation)
 ───────────────────────────────────────────── */
 @keyframes swdm-fade-up {
-  from { opacity: 0; transform: translateY(14px) translateZ(0); }
-  to   { opacity: 1; transform: translateY(0)    translateZ(0); }
+  from { opacity: 0; transform: translateY(14px); }
+  to   { opacity: 1; transform: none; }
 }
 
 @keyframes swdm-fade-in {
@@ -392,14 +392,14 @@ html.scrolled [data-testid="stHeader"] {
 ───────────────────────────────────────────── */
 .swdm-reveal {
   opacity: 0;
-  transform: translateY(14px) translateZ(0);
+  transform: translateY(14px);
   transition:
     opacity   var(--mo-slow)   var(--mo-ease-out),
     transform var(--mo-slow)   var(--mo-ease-out);
 }
 .swdm-reveal.is-visible {
   opacity: 1;
-  transform: translateY(0) translateZ(0);
+  transform: none;
 }
 
 /* ─────────────────────────────────────────────
@@ -407,7 +407,7 @@ html.scrolled [data-testid="stHeader"] {
 ───────────────────────────────────────────── */
 .swdm-stagger > * {
   opacity: 0;
-  transform: translateY(14px) translateZ(0);
+  transform: translateY(14px);
   animation: swdm-fade-up var(--mo-slow) var(--mo-ease-out) forwards;
 }
 .swdm-stagger > *:nth-child(1) { animation-delay:  40ms; }
@@ -427,7 +427,7 @@ html.scrolled [data-testid="stHeader"] {
 .architecture-card-grid > .architecture-card,
 .architecture-flow > .architecture-flow-node {
   opacity: 0;
-  transform: translateY(14px) translateZ(0);
+  transform: translateY(14px);
   animation: swdm-fade-up var(--mo-slow) var(--mo-ease-out) forwards;
 }
 .metric-grid > .metric-card:nth-child(1),
@@ -469,7 +469,7 @@ html.scrolled [data-testid="stHeader"] {
 .site-hero > *,
 .simulator-intro > * {
   opacity: 0;
-  transform: translateY(14px) translateZ(0);
+  transform: translateY(14px);
   animation: swdm-fade-up 600ms var(--mo-ease-out) forwards;
 }
 .site-hero > *:nth-child(1), .simulator-intro > *:nth-child(1) { animation-delay:  80ms; }
@@ -479,8 +479,8 @@ html.scrolled [data-testid="stHeader"] {
 
 /* Floating hero visual */
 @keyframes swdm-float {
-  0%,100% { transform: translateY(0)   translateZ(0); }
-  50%     { transform: translateY(-7px) translateZ(0); }
+  0%,100% { transform: translateY(0); }
+  50%     { transform: translateY(-7px); }
 }
 .hero-orbit, .publisher-art {
   animation: swdm-float 8s ease-in-out infinite;
@@ -498,8 +498,8 @@ html.scrolled [data-testid="stHeader"] {
 }
 
 @keyframes swdm-chart-in {
-  from { opacity: 0; transform: translateY(8px) scale(.996) translateZ(0); }
-  to   { opacity: 1; transform: translateY(0)   scale(1)    translateZ(0); }
+  from { opacity: 0; transform: translateY(8px) scale(.996); }
+  to   { opacity: 1; transform: none; }
 }
 
 /* SVG line draw-in */
@@ -664,7 +664,7 @@ svg .trace path[stroke] {
 .workstation-panel,
 .simulator-intro {
   opacity: 0;
-  transform: translateY(14px) translateZ(0);
+  transform: translateY(14px);
   animation: swdm-fade-up var(--mo-slow) var(--mo-ease-out) forwards;
   animation-delay: 60ms;
 }
