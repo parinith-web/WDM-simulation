@@ -96,11 +96,13 @@ Then open `http://localhost:8501` in your browser.
 ## Screenshots
 
 | Simulation Controls | Signal Waveforms |
-|---|---|
+|:---:|:---:|
+| ![Simulation Controls](assets/simulation_controls.png) | ![Signal Waveforms](assets/signal_waveforms.png) |
 | Fiber length, WDM channels, encryption and amplification toggles | Input NRZ → Encrypted → Optical TX/RX → Filtered |
 
 | Eye Diagrams | BER vs Distance |
-|---|---|
+|:---:|:---:|
+| ![Eye Diagrams](assets/eye_diagrams.png) | ![BER vs Distance](assets/ber_vs_distance.png) |
 | Three scenarios compared side-by-side (Q=8.5 / 3.2 / 3.8) | Log-scale BER for all 8 WDM channels across 120 km |
 
 ---
