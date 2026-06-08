@@ -6,6 +6,20 @@ A Python simulation framework for designing, testing, and validating wavelength-
 
 ---
 
+## Screenshots
+
+| Simulation Controls | Signal Waveforms |
+|:---:|:---:|
+| ![Simulation Controls](assets/simulation_controls.png) | ![Signal Waveforms](assets/signal_waveforms.png) |
+| Fiber length, WDM channels, encryption and amplification toggles | Input NRZ → Encrypted → Optical TX/RX → Filtered |
+
+| Eye Diagrams | BER vs Distance |
+|:---:|:---:|
+| ![Eye Diagrams](assets/eye_diagrams.png) | ![BER vs Distance](assets/ber_vs_distance.png) |
+| Three scenarios compared side-by-side (Q=8.5 / 3.2 / 3.8) | Log-scale BER for all 8 WDM channels across 120 km |
+
+---
+
 ## What It Does
 
 This simulator lets you model an end-to-end WDM optical link and study how signal integrity degrades over distance. You can configure the fiber length, number of wavelength channels, data rate, and toggle security/amplification layers — then compare results across multiple scenarios through an interactive dashboard.
@@ -90,20 +104,6 @@ Then open `http://localhost:8501` in your browser.
 | `plotly` | ≥ 5.17 | BER curves and eye diagrams |
 | `pandas` | ≥ 2.0 | Scenario tables and metrics |
 | `Pillow` | ≥ 10.0 | Image encryption visualisation |
-
----
-
-## Screenshots
-
-| Simulation Controls | Signal Waveforms |
-|:---:|:---:|
-| ![Simulation Controls](assets/simulation_controls.png) | ![Signal Waveforms](assets/signal_waveforms.png) |
-| Fiber length, WDM channels, encryption and amplification toggles | Input NRZ → Encrypted → Optical TX/RX → Filtered |
-
-| Eye Diagrams | BER vs Distance |
-|:---:|:---:|
-| ![Eye Diagrams](assets/eye_diagrams.png) | ![BER vs Distance](assets/ber_vs_distance.png) |
-| Three scenarios compared side-by-side (Q=8.5 / 3.2 / 3.8) | Log-scale BER for all 8 WDM channels across 120 km |
 
 ---
 
